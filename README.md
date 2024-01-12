@@ -40,16 +40,35 @@ Check out my app called [Inkdrop](https://www.inkdrop.app/)
   - [iterm2](https://iterm2.com/) **_(Macos)_**
 - [Solarized Osaka](https://github.com/craftzdog/solarized-osaka.nvim)
 
-## Shell setup (macOS & Linux)
+## Fish Shell setup
 
-- [Fish shell](https://fishshell.com/)
-- [Fisher](https://github.com/jorgebucaran/fisher) - Plugin manager
-- [Tide](https://github.com/IlanCosman/tide) - Shell theme. Use version 5: `fisher install ilancosman/tide@v5`
-- [Nerd fonts](https://github.com/ryanoasis/nerd-fonts) - Powerline-patched fonts. I use Hack.
-- [z for fish](https://github.com/jethrokuan/z) - Directory jumping
-- [Eza](https://github.com/eza-community/eza) - `ls` replacement
-- [ghq](https://github.com/x-motemen/ghq) - Local Git repository organizer
-- [fzf](https://github.com/PatrickF1/fzf.fish) - Interactive filtering
+Install fish shell
+```shell
+sudo apt-add-repository ppa:fish-shell/release-3
+sudo apt update
+sudo apt install -y fish
+chsh -s /usr/bin/fish
+```
+
+Install fish plugins
+
+```shell
+curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+
+fisher install jorgebucaran/nvm.fish
+fisher install jethrokuan/z
+fisher install PatrickF1/fzf.fish
+fisher install jorgebucaran/spark.fish
+fisher update franciscolourenco/done
+fisher install joseluisq/gitnow@2.12.0
+fisher install meaningful-ooo/sponge
+fisher install jorgebucaran/autopair.fish
+fisher install nickeb96/puffer-fish
+fisher install paldepind/projectdo
+fisher install gazorby/fish-abbreviation-tips
+fisher install jorgebucaran/hydro
+```
+
 
 ## PowerShell setup (Windows)
 

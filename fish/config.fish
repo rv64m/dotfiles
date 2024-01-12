@@ -1,11 +1,3 @@
-# 
-set current_ip (cat /etc/resolv.conf | grep nameserver | awk '{print $2}')
-
-# 设置代理
-set -x http_proxy http://$current_ip:17890
-set -x https_proxy http://$current_ip:17890
-
-set -gx PATH $HOME/.cargo/bin $PATH
 
 set fish_greeting ""
 
@@ -31,6 +23,9 @@ set -gx EDITOR nvim
 set -gx PATH bin $PATH
 set -gx PATH ~/bin $PATH
 set -gx PATH ~/.local/bin $PATH
+
+# Rust
+set -gx PATH $HOME/.cargo/bin $PATH
 
 # NodeJS
 set -gx PATH node_modules/.bin $PATH

@@ -7,8 +7,6 @@ sudo apt install -y git clang curl wget libssl-dev \
     llvm libudev-dev make protobuf-compiler build-essential \
     cmake gcc g++
 
-
-
 # =========================
 # Install rust
 # =========================
@@ -21,10 +19,10 @@ else
 	rustup default stable
 fi
 
-rustup update nightly
-rustup target add wasm32-unknown-unknown --toolchain nightly
+# rustup update nightly
+# rustup target add wasm32-unknown-unknown --toolchain nightly
+rustup target add wasm32-unknown-unknown
 rustup component add rust-src
-
 
 
 # =========================
@@ -77,16 +75,14 @@ fisher install paldepind/projectdo
 ## Install abbreviation: https://github.com/Gazorby/fish-abbreviation-tips
 fisher install gazorby/fish-abbreviation-tips
 
-
-
-curl -L https://get.oh-my.fish | fish
-
-# 安装一些常用的 Fish 插件
-fish -c "omf install bobthefish"
-fish -c "omf install nvm"
-
-
-# 其他优化，例如安装 zsh、tmux 等
-# sudo apt install zsh tmux
+# =========================
+# Initial fish-shell
+# =========================
+cp $PWD/fish/config.fish $HOME/.config/fish/
+cp $PWD/fish/config-linux.fish $HOME/.config/fish/
+cp $PWD/fish/config-osx.fish $HOME/.config/fish/
+cp $PWD/fish/config-windows.fish $HOME/.config/fish/
+cp -r $PWD/fish/functions $HOME/.config/fish/functions
+cp -r $PWD/fish/conf.d $HOME/.config/fish/conf.d
 
 echo "初始化完成！请重新启动终端以使更改生效。"
