@@ -76,6 +76,12 @@ fisher install paldepind/projectdo
 fisher install gazorby/fish-abbreviation-tips
 
 # =========================
+# Initial node related
+# =========================
+nvm list-remote
+nvm install v20.13.1
+
+# =========================
 # Initial fish-shell
 # =========================
 cp $PWD/fish/config.fish $HOME/.config/fish/
