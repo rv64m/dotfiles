@@ -5,7 +5,14 @@
 # =========================
 if ! which nvim >/dev/null 2>&1; then
     echo "Installing neovim..."
-    sudo apt install -y ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip
+    if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+        sudo apt install -y ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip
+    elif [[ "$OSTYPE" == "darwin"* ]]; then
+        brew install ninja gettext libtool automake cmake pkg-config unzip
+    else
+        echo "Unsupported operating system"
+        exit 1
+    fi
     git clone https://github.com/neovim/neovim.git
     cd neovim
     git checkout stable
@@ -17,21 +24,13 @@ if ! which nvim >/dev/null 2>&1; then
 fi
 
 # =========================
-# Install astronvim
+# Install neovim ide
 # =========================
 if ! [ -d ~/.config/nvim ]; then
-    echo "Installing astronvim..."
-    mv ~/.local/share/nvim ~/.local/share/nvim.bak
-    mv ~/.local/state/nvim ~/.local/state/nvim.bak
-    mv ~/.cache/nvim ~/.cache/nvim.bak
-    git clone --depth 1 https://github.com/AstroNvim/template ~/.config/nvim
-    rm -rf ~/.config/nvim/.git
-fi
-
-# =========================
-# Install neovim plugins
-# =========================
-if ! [ -d ~/.config/nvim/myself ]; then
-    echo "Installing neovim plugins..."
-    cp -r astronvim ~/.config/nvim/myself
+    echo "Installing neovim ide..."
+    rm -rf ~/.config/nvim
+    rm -rf ~/.local/share/nvim
+    rm -rf ~/.local/state/nvim
+    rm -rf  ~/.cache/nvim
+    cp -r nvim ~/.config/nvim
 fi

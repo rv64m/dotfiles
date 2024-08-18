@@ -47,6 +47,7 @@ function __check_rvm --on-variable PWD --description 'Do nvm stuff'
   if test -f .nvmrc; and test -r .nvmrc;
     nvm use
   else
+    nvm use v20.16.0
   end
 end
 
