@@ -46,47 +46,7 @@ else
 fi
 
 # Install rust
-if ! which rustup >/dev/null 2>&1; then
-	curl https://sh.rustup.rs -sSf | sh -s -- -y
-    export PATH=$HOME/.cargo/bin:$PATH
-	rustup default stable
-    rustup target add wasm32-unknown-unknown
-    rustup component add rust-src
-else
-	rustup update
-	rustup default stable
-fi
 
-# Install node
-export NVM_DIR="$HOME/.nvm"
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
-if ! nvm list | grep -q "v16.20.2"; then
-    nvm install v16.20.2
-else
-    echo "Node.js v16.20.2 is already installed. Skipping..."
-fi
-
-if ! nvm list | grep -q "v18.20.4"; then
-    nvm install v18.20.4
-else
-    echo "Node.js v18.20.4 is already installed. Skipping..."
-fi
-
-if ! nvm list | grep -q "v20.16.0"; then
-    nvm install v20.16.0
-else
-    echo "Node.js v20.16.0 is already installed. Skipping..."
-fi
-
-if [ ! -f ~/.nvmrc ]; then
-    cp .nvmrc ~/.nvmrc
-    echo "Created .nvmrc file with Node.js version v20.16.0"
-    nvm use
-else
-    echo ".nvmrc file already exists. Skipping creation..."
-fi
 
 # Install nerdfonts
 brew install font-hack-nerd-font
