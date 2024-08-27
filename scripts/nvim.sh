@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# =========================
-# Install neovim from github
-# =========================
 if ! which nvim >/dev/null 2>&1; then
     echo "Installing neovim..."
     if [[ "$OSTYPE" == "linux-gnu"* ]]; then
@@ -23,9 +20,6 @@ if ! which nvim >/dev/null 2>&1; then
     
 fi
 
-# =========================
-# Install neovim ide
-# =========================
 if ! [ -d ~/.config/nvim ]; then
     echo "Installing neovim ide..."
     rm -rf ~/.config/nvim
