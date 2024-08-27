@@ -1,53 +1,3 @@
-#! /bin/bash
-
-
-#===============================================================================
-# Install Fish
-#===============================================================================
-if ! command -v fish &> /dev/null
-then
-    echo "Fish shell not found. Installing Fish..."
-    
-    # Check the operating system
-    if [[ "$OSTYPE" == "darwin"* ]]; then
-        # macOS
-        brew install fish
-    elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
-        # Linux
-        if command -v apt-get &> /dev/null; then
-            # Debian/Ubuntu
-            sudo apt-add-repository ppa:fish-shell/release-3
-            sudo apt-get update
-            sudo apt-get install -y fish
-        elif command -v dnf &> /dev/null; then
-            # Fedora
-            sudo dnf install -y fish
-        elif command -v pacman &> /dev/null; then
-            # Arch Linux
-            sudo pacman -S fish
-        else
-            echo "Unsupported Linux distribution. Please install Fish manually."
-            exit 1
-        fi
-    else
-        echo "Unsupported operating system. Please install Fish manually."
-        exit 1
-    fi
-    
-    echo "Fish shell installed successfully."
-else
-    echo "Fish shell is already installed. Skipping installation."
-fi
-
-# Set fish as the default shell
-if [[ "$SHELL" != *"fish"* ]]; then
-    echo "Setting fish as the default shell..."
-    chsh -s $(which fish)
-    echo "Fish set as the default shell. Please log out and log back in for changes to take effect."
-else
-    echo "Fish is already the default shell."
-fi
-
 #===============================================================================
 # Install Fisher and plugins
 #===============================================================================
@@ -84,7 +34,7 @@ fisher install paldepind/projectdo
 fisher install gazorby/fish-abbreviation-tips
 
 ## Install tide@5 https://github.com/IlanCosman/tide
-fisher install ilancosman/tide@5
+fisher install ilancosman/tide@v6
 
 
 # =========================
