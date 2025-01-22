@@ -17,6 +17,10 @@ vim.g.rustaceanvim = {
     default_settings = {
       -- rust-analyzer language server configuration
       ['rust-analyzer'] = {
+        checkOnSave = {
+          enable = true,
+          command = "clippy",
+        }, 
       },
     },
   },
