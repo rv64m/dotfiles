@@ -1,32 +1,32 @@
 return {
-  -- 如果你明确知道 rustaceanvim 是这样被引入的
-  -- 或者如果你是手动添加 rustaceanvim
+  -- If you explicitly know that rustaceanvim is introduced this way
+  -- Or if you are adding rustaceanvim manually
   {
     'mrcjkb/rustaceanvim',
-    -- 可选：指定版本或分支
-    -- version = "^4", -- 例如，或者具体的 commit hash
+    -- Optional: specify a version or branch
+    -- version = "^4", -- for example, or a specific commit hash
     ft = { 'rust' },
     opts = {
-      -- 这是传递给 rustaceanvim.setup() 的选项
+      -- These are the options passed to rustaceanvim.setup()
       server = {
-        -- 这些设置会传递给 rust-analyzer
+        -- These settings are passed to rust-analyzer
         settings = {
           ['rust-analyzer'] = {
-            -- 禁用保存时检查
+            -- Disable check on save
             checkOnSave = {
-              command = 'clippy', -- 通常默认是 clippy，也可以是 "check"
+              command = 'clippy', -- usually clippy by default, can also be "check"
               enable = false,
             },
-            -- 你可能还想检查其他可能触发保存时检查的设置，例如 lens
+            -- You may also want to check other settings that might trigger a check on save, such as lens
             lens = {
-              enable = true, -- 保持 lens 本身启用 (可选)
+              enable = true, -- keep lens itself enabled (optional)
               commands = {
-                -- 如果 lens 中也有 checkOnSave 的选项，确保它也被禁用或不启用
-                -- checkOnSave = { enable = false } -- 根据 rustaceanvim 的具体实现
+                -- If there is also a checkOnSave option in lens, make sure it is also disabled or not enabled
+                -- checkOnSave = { enable = false } -- depending on the specific implementation of rustaceanvim
               },
             },
-            -- 其他你想要的 rust-analyzer 设置
-            -- например:
+            -- Other rust-analyzer settings you want
+            -- for example:
             -- cargo = {
             --   features = "all",
             -- },
@@ -35,14 +35,14 @@ return {
             -- },
           },
         },
-        -- 你可以在这里覆盖 rustaceanvim 为 rust-analyzer 设置的 on_attach 函数
+        -- You can override the on_attach function that rustaceanvim sets for rust-analyzer here
         -- on_attach = function(client, bufnr)
-        --   -- 默认的 on_attach 通常由 rustaceanvim 处理
-        --   -- 你可以在这里添加或覆盖键位绑定等
+        --   -- The default on_attach is usually handled by rustaceanvim
+        --   -- You can add or override keybindings here
         --   print("Rust-analyzer attached to buffer: " .. bufnr)
         -- end,
       },
-      -- 其他 rustaceanvim 特有的设置可以在这里配置
+      -- Other rustaceanvim-specific settings can be configured here
       -- tools = {
       --   hover_actions = {
       --     auto_focus = true,
@@ -50,18 +50,18 @@ return {
       -- },
     },
     config = function(_, opts)
-      -- 如果 opts 需要更复杂的处理或你想在 setup 前后做些事情，可以在这里写
-      -- 通常对于 rustaceanvim，直接使用 opts 就足够了
+      -- If opts requires more complex processing or you want to do something before or after setup, you can write it here
+      -- Usually for rustaceanvim, using opts directly is sufficient
       require('rustaceanvim').setup(opts)
     end,
   },
 
-  -- 备选方案: 如果 LazyVim 通过其 "extras" 管理 Rust (例如 lazyvim.plugins.extras.lang.rust)
-  -- 你可能需要像这样覆盖默认配置：
+  -- Alternative: If LazyVim manages Rust through its "extras" (e.g. lazyvim.plugins.extras.lang.rust)
+  -- You may need to override the default configuration like this:
   -- {
-  --   "lazyvim.plugins.extras.lang.rust", -- 或者实际的插件名称
-  --   opts = function(_, opts) -- 使用函数形式来合并或修改默认 opts
-  --     -- 确保 rust-analyzer 的配置被正确修改
+  --   "lazyvim.plugins.extras.lang.rust", -- or the actual plugin name
+  --   opts = function(_, opts) -- use a function to merge or modify the default opts
+  --     -- Make sure the rust-analyzer configuration is modified correctly
   --     if opts.servers and opts.servers["rust-analyzer"] then
   --       opts.servers["rust-analyzer"].settings = opts.servers["rust-analyzer"].settings or {}
   --       opts.servers["rust-analyzer"].settings["rust-analyzer"] =
@@ -75,17 +75,17 @@ return {
   --         }
   --       )
   --     elseif opts.server and opts.server.settings and opts.server.settings["rust-analyzer"] then
-  --       -- 另一种可能的结构，具体取决于 LazyVim extra 的实现
+  --       -- Another possible structure, depending on the implementation of the LazyVim extra
   --       opts.server.settings["rust-analyzer"].checkOnSave = {
   --         enable = false,
-  --         command = "clippy", -- 保持 command 或移除，因为 enable 是 false
+  --         command = "clippy", -- keep the command or remove it, since enable is false
   --       }
   --     else
-  --       -- 如果结构更复杂，你可能需要打印 opts 来查看其结构
+  --       -- If the structure is more complex, you may need to print opts to see its structure
   --       -- print(vim.inspect(opts))
-  --       -- 然后相应地修改
-  --       -- 作为一种更通用的方式，如果 rustaceanvim 被配置为 lspconfig 的一部分
-  --       if opts.servers and opts.servers.rust_analyzer then -- 注意这里可能是 rust_analyzer (下划线)
+  --       -- and then modify it accordingly
+  --       -- As a more general way, if rustaceanvim is configured as part of lspconfig
+  --       if opts.servers and opts.servers.rust_analyzer then -- note that it may be rust_analyzer (with an underscore) here
   --            opts.servers.rust_analyzer.settings = opts.servers.rust_analyzer.settings or {}
   --            opts.servers.rust_analyzer.settings["rust-analyzer"] = vim.tbl_deep_extend("force",
   --                opts.servers.rust_analyzer.settings["rust-analyzer"] or {},

@@ -1,6 +1,6 @@
 # InsisVim
 
-一个开箱即用的 Neovim IDE 层，以难以置信的简单方式配置开发环境，例如配置 `golang`，只需：
+An out-of-the-box Neovim IDE layer that configures the development environment in an incredibly simple way, for example, to configure `golang`, you only need:
 
 ```lua
 require("insis").setup({
@@ -14,54 +14,54 @@ require("insis").setup({
 })
 ```
 
-`:wq` 保存重启后，会自动安装语法高亮和 Golang Language Server，Linter，Formatter 等。
+After saving with `:wq` and restarting, it will automatically install syntax highlighting, Golang Language Server, Linter, Formatter, etc.
 
-## 🛠 安装
+## 🛠 Installation
 
 https://github.com/nshen/InsisVim/assets/181506/ad36e1b1-05f6-47e9-bf2e-6738f539ccce
 
-### 注意事项
+### Prerequisites
 
-- 如缺少以下常见命令行工具，`git`、`wget`、`curl`、`ripgrep`、`nvim v0.9.x`，则有可能安装失败。
+- If the following common command-line tools are missing, `git`, `wget`, `curl`, `ripgrep`, `nvim v0.9.x`, the installation may fail.
 
-  - 在 Mac 上，您可以使用 `brew install` 安装以上工具。
-  - 在 Ubuntu 上，您可以检查 [Ubuntu 安装指南](https://github.com/nshen/InsisVim/issues/5)。
+  - On Mac, you can use `brew install` to install the above tools.
+  - On Ubuntu, you can check the [Ubuntu Installation Guide](https://github.com/nshen/InsisVim/issues/5).
 
-- 如之前安装过其他配置，建议先删除或备份以下目录
+- If you have installed other configurations before, it is recommended to delete or back up the following directories first
 
   - `~/.local/share/nvim`
   - `~/.cache/nvim`
   - `~/.config/nvim`
 
-* 需要**科学网络**环境，建议开启**全局/增强**模式等，如遇[网络问题可以到此讨论](https://github.com/nshen/learn-neovim-lua/discussions/categories/q-a?discussions_q=is%3Aopen+category%3AQ%26A+label%3A%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98)
+* A stable internet connection is required. It is recommended to use a VPN or proxy if you are in a region with network restrictions. If you encounter [network problems, you can discuss them here](https://github.com/nshen/learn-neovim-lua/discussions/categories/q-a?discussions_q=is%3Aopen+category%3AQ%26A+label%3A%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98)
 
-### 安装步骤
+### Installation Steps
 
-1. 克隆本项目到 Neovim 配置目录
+1. Clone this project to the Neovim configuration directory
 
 ```lua
 git clone https://github.com/nshen/InsisVim.git ~/.config/nvim
 ```
 
-2. 运行 `nvim` ，等待插件全部安装完成
+2. Run `nvim` and wait for all plugins to be installed
 
-3. 重启
+3. Restart
 
-## 自定义配置
+## Custom Configuration
 
-自定义配置非常简单，就像配置一个插件一样，只需要修改 `~/.config/nvim/init.lua` 后保存重启即可
+Customizing the configuration is very simple, just like configuring a plugin, you just need to modify `~/.config/nvim/init.lua` and then save and restart.
 
 ```lua
 require("insis").setup({
-    -- 按需设置参数
+    -- Set parameters as needed
 })
 ```
 
-这里支持的参数非常的多，但基本上分为**常用配置**，和**编程环境配置**。
+There are many parameters supported here, but they are basically divided into **common configurations** and **programming environment configurations**.
 
-### 常用配置
+### Common Configurations
 
-例如用来设置主题的 `colorscheme` 这类常用的配置，修改后 `:wq` 保存重启即可生效
+For example, for common configurations like setting the theme with `colorscheme`, you can just modify it, save with `:wq`, and restart for it to take effect.
 
 ```lua
 require("insis").setup({
@@ -69,31 +69,31 @@ require("insis").setup({
 })
 ```
 
-> InsisVim 默认使用 `tokyonight` 主题，同时内置了 `nord`、`onedark`、`gruvbox`、`nightfox`、`nordfox`、`duskfox`、`dracula` 主题。
-> 可以通过 `:InsisColorPreview` 命令预览内置主题
+> InsisVim uses the `tokyonight` theme by default, and also has built-in themes like `nord`, `onedark`, `gruvbox`, `nightfox`, `nordfox`, `duskfox`, and `dracula`.
+> You can preview the built-in themes with the `:InsisColorPreview` command.
 
 https://github.com/nshen/InsisVim/assets/181506/15517b20-acdf-45eb-9db6-9a0d0806cb4a
 
-#### AI 补全
+#### AI Completion
 
 <details>
-<summary>Copilot 配置</summary>
+<summary>Copilot Configuration</summary>
   
 ```lua
 require("insis").setup({
   cmp = {
-    -- 启用 copilot
+    -- Enable copilot
     copilot = true,
   },
 })
 ```
 
-InsisVim 内置了以下插件，启用后会使其生效
+InsisVim has the following built-in plugins, which will be enabled after you enable them.
 
 - [copilot.lua](https://github.com/zbirenbaum/copilot.lua)
 - [copilot-cmp](https://github.com/zbirenbaum/copilot-cmp)
 
-因为 copilot 是收费的，首次使用需要运行 `:Copilot auth` 认证后才会生效，但如果你是学生老师或者开源项目贡献者，可以[申请免费](https://docs.github.com/en/copilot/quickstart)使用。
+Because copilot is a paid service, you need to run `:Copilot auth` for authentication before you can use it for the first time. However, if you are a student, teacher, or contributor to an open source project, you can [apply for free use](https://docs.github.com/en/copilot/quickstart).
 
 > GitHub Copilot is free to use for verified students, teachers, and maintainers of popular open source projects.
 
@@ -101,33 +101,33 @@ InsisVim 内置了以下插件，启用后会使其生效
 
 
 <details>
-<summary>Codeium 配置</summary>
+<summary>Codeium Configuration</summary>
   
 ```lua
 require("insis").setup({
   cmp = {
-    -- 启用 codeium 
+    -- Enable codeium 
     codeium = true,
   },
 })
 ```
 
-InsisVim 内置了[Codeium.nvim](https://github.com/Exafunction/codeium.nvim)，启用后会使其生效
+InsisVim has [Codeium.nvim](https://github.com/Exafunction/codeium.nvim) built-in, which will be enabled after you enable it.
 
-首次使用需要运行 `:Codeium Auth` 认证一下即可生效
+You need to run `:Codeium Auth` for authentication the first time you use it.
 
 </details>
 
 #### Buffers
 
-在 Vim 世界里，Buffer 表示已经加载到内存中的文件。非常像 VSCode 中的 Tab 页，在 VSCode 里看到一个标签页，就表示一个文件加载到内存中了。
+In the Vim world, a Buffer represents a file that has been loaded into memory. It's very similar to a Tab in VSCode. When you see a tab in VSCode, it means that a file has been loaded into memory.
 
-在 InsisVim 中使用 [bufferline.nvim](https://github.com/akinsho/bufferline.nvim) 插件来模拟这种行为，并且简化了配置，非常容易定制按键
+InsisVim uses the [bufferline.nvim](https://github.com/akinsho/bufferline.nvim) plugin to simulate this behavior, and it simplifies the configuration, making it very easy to customize keybindings.
 
 https://github.com/nshen/InsisVim/assets/181506/a639f05b-adab-4279-8482-e3088d2fae8f
 
 <details>
-<summary>Bufferline 配置</summary>
+<summary>Bufferline Configuration</summary>
   
 ```lua
 require("insis").setup({
@@ -155,10 +155,10 @@ require("insis").setup({
 
 #### Super Windows
 
-和 VSCode 不同，Vim 中的 Window 只是显示 Buffer 的窗口，允许多个窗口同时显示甚至修改一个 Buffer，在 InsisVim 中可以非常简单的定义一系列窗口相关的快捷键，包括水平垂直分割，快速窗口之间跳转，关闭等，称为 Super windows。
+Unlike VSCode, a Window in Vim is just a window for displaying a Buffer. It allows multiple windows to display or even modify a Buffer at the same time. In InsisVim, you can very easily define a series of window-related shortcuts, including horizontal and vertical splitting, fast window switching, closing, etc., which are called Super windows.
 
 <details>
-<summary>Super Windows 配置</summary>
+<summary>Super Windows Configuration</summary>
   
 ```lua
 require("insis").setup({
@@ -191,19 +191,19 @@ require("insis").setup({
 
 #### Super Tab
 
-Vim 中的 Tab 是用来保存一个或多个 windows 组合，这样你就可以在不改变 windows 布局的情况下，切换到不同的 Tab， 用不同的 windows 布局来做不同的事。
+A Tab in Vim is used to save one or more window combinations, so you can switch to different Tabs to do different things without changing the window layout.
 
-在 InsisVim 中也可以快速的定义一组 tabs 相关的快捷键，称为 Super Tab
+In InsisVim, you can also quickly define a set of tab-related shortcuts, called Super Tab.
 
 <details>
-<summary>Super Tab 配置</summary>
+<summary>Super Tab Configuration</summary>
 
-注意 super tab 并不常用，所以默认是关闭的，需要手动启用
+Note that super tab is not commonly used, so it is disabled by default and needs to be enabled manually.
 
 ```lua
 require("insis").setup({
   s_tab = {
-    enable = true, -- 默认关闭
+    enable = true, -- disabled by default
     keys = {
       split = "ts",
       prev = "th",
@@ -220,19 +220,19 @@ require("insis").setup({
 
 ---
 
-简单讲 Buffers & Windows & Tabs 三者的关系如下：
+To put it simply, the relationship between Buffers, Windows, and Tabs is as follows:
 
-- buffer 是加载到内存的文件，我们用 bufferline 插件模拟类似 VSCode 的 Tab页 行为
-- window 负责显示buffer，熟悉快速分割窗口，在不同窗口快速跳转的快捷键是提高开发效率的关键
-- tab 负责组织 windows 布局，通常用不到，所以默认是关闭的
+- A buffer is a file loaded into memory. We use the bufferline plugin to simulate the behavior of tabs in VSCode.
+- A window is responsible for displaying the buffer. Familiarizing yourself with the shortcuts for quickly splitting windows and switching between them is the key to improving development efficiency.
+- A tab is responsible for organizing the window layout. It is not commonly used, so it is disabled by default.
 
 <img width="762" alt="image" src="https://github.com/nshen/InsisVim/assets/181506/fb10bd17-895a-4f67-9718-87e11eb538b3">
 
 ---
 
-### 编程环境配置
+### Programming Environment Configuration
 
-例如 `Golang` 环境，设置 enable 后，`:wq` 保存重启会自动调用 Mason 安装对应的语法高亮 Language Server，Linter，Formatter 等。安装完毕后再次重启打开对应的 Golang 项目即可生效
+For example, for the `Golang` environment, after setting enable to true, saving with `:wq` and restarting will automatically call Mason to install the corresponding syntax highlighting, Language Server, Linter, Formatter, etc. After the installation is complete, restart and open the corresponding Golang project for it to take effect.
 
 ```lua
 require("insis").setup({
@@ -243,24 +243,24 @@ require("insis").setup({
 })
 ```
 
-开启其他语言相关的模块也都类似，修改 `~/.config/nvim/init.lua` 后保存重启，即可自动完成安装。
+Enabling other language-related modules is similar. Just modify `~/.config/nvim/init.lua`, save, and restart to complete the installation automatically.
 
-由于编程环境启用后需要额外安装LSP Linter Formatter 语法高亮等，所以默认情况下**编程环境配置**都是关闭的，需要手动开启，只有 `Lua` 是默认开启的，这是因为你会经常使用 `Lua` 语言来修改配置。而 **常用配置** 则大部分默认都是开启状态的。
+Since enabling the programming environment requires additional installation of LSP, Linter, Formatter, syntax highlighting, etc., the **programming environment configurations** are disabled by default. You need to enable them manually. Only `Lua` is enabled by default, because you will often use the `Lua` language to modify the configuration. And most of the **common configurations** are enabled by default.
 
-> 完整默认参数列表在此 [config.lua](https://github.com/nshen/InsisVim/blob/main/lua/insis/config.lua)
+> The complete list of default parameters is here [config.lua](https://github.com/nshen/InsisVim/blob/main/lua/insis/config.lua)
 
-## 常用编程环境配置
+## Common Programming Environment Configurations
 
-语言环境相关模块请逐个打开，否则重启后一次会安装很多服务，需要等待较长时间。
+Please enable the language environment related modules one by one, otherwise many services will be installed at once after restarting, which will take a long time.
 
 <details>
-<summary>JSON 编辑</summary>
+<summary>JSON Editing</summary>
   
 ```lua
 require("insis").setup({
   json = {
     enable = true,
-    -- 以下为默认值，可以省略
+    -- The following are the default values and can be omitted
     lsp = "jsonls",
     ---@type "jsonls" | "prettier"
     formatter = "jsonls",
@@ -269,58 +269,58 @@ require("insis").setup({
 })
 ```
 
-启用 `json` 功能，重启后
+After enabling the `json` function and restarting:
 
-- 会自动安装 Treesitter 的 JSON 语法高亮。
-- 自动安装并配置 [jsonls](https://github.com/microsoft/vscode-json-languageservice) Language Server
+- It will automatically install Treesitter's JSON syntax highlighting.
+- It will automatically install and configure the [jsonls](https://github.com/microsoft/vscode-json-languageservice) Language Server.
 
 </details>
 
 <details>
-<summary>Markdown 编辑</summary>
+<summary>Markdown Editing</summary>
   
 ```lua
 require("insis").setup({
   markdown = {
     enable = true,
-    -- 以下为默认值，可以省略
+    -- The following are the default values and can be omitted
     mkdnflow = {
       next_link = "gn",
       prev_link = "gp",
       next_heading = "gj",
       prev_heading = "gk",
-      -- 进入链接
+      -- follow link
       follow_link = "gd",
-      -- 从链接返回
+      -- go back from link
       go_back = "<C-o>",
       toggle_item = "tt",
     },
     formatter = "prettier",
-    -- 保存时格式化默认为false
+    -- format on save is false by default
     format_on_save = false,
-    -- 文字长度到达边缘默认自动折行
+    -- text will wrap automatically by default when it reaches the edge
     wrap = true,
-    ---:MarkdownPreview 命令打开文章预览默认是 dark 皮肤
+    ---:MarkdownPreview command opens the article preview with the dark skin by default
     ---@type "dark" | "light"
     theme = "dark",
   },
 })
 ```
 
-启用 markdown 功能后，重启会自动安装 Treesitter 的 markdown 语法高亮，和 prettier 用于格式化。
+After enabling the markdown function and restarting, it will automatically install Treesitter's markdown syntax highlighting and prettier for formatting.
 
-增加 `:MarkdownPreview` 命令实时预览 markdown 文件
+It adds the `:MarkdownPreview` command to preview markdown files in real time.
 
-增加 `mkdnflow.nvim` 相关的快捷键
+It adds `mkdnflow.nvim` related shortcuts.
 
-增加 markdown 相关快捷键例如 `5x5table`
+It adds markdown related shortcuts, for example `5x5table`.
 
 </details>
 
 <details>
-<summary>前端开发</summary>
+<summary>Frontend Development</summary>
   
-前端开发配置相对比较复杂，因为需要安装多个 LSP，多种文件的语法高亮等，重启后需要等待时间会较长
+Frontend development configuration is relatively complex because it requires installing multiple LSPs, syntax highlighting for multiple file types, etc. It will take a long time to wait after restarting.
 
 ```lua
 require("insis").setup({
@@ -354,35 +354,35 @@ require("insis").setup({
 </details>
 
 <details>
-<summary>Solidity 开发</summary>
+<summary>Solidity Development</summary>
   
 ```lua
 require("insis").setup({
   solidity = {
     enable = true,
-    --linter 可以是 sohint 或 false
+    --linter can be sohint or false
     linter = "solhint",
     format_on_save = true,
   },
 })
 ```
-当设置 `enable` 为 `true`  并重启后，将安装:
+When `enable` is set to `true` and you restart, it will install:
 
-- TreeSitter 语法高亮：`solidity`
+- TreeSitter syntax highlighting: `solidity`
 - Language Server: [nomicfoundation-solidity-language-server](https://github.com/NomicFoundation/hardhat-vscode/tree/development/server)
-- 代码片段: [solidity snippets](https://github.com/rafamadriz/friendly-snippets/blob/main/snippets/solidity.json)
-- 如果设置了linter，则自动下载 [sohint](https://github.com/protofire/solhint) 并启动
+- Code snippets: [solidity snippets](https://github.com/rafamadriz/friendly-snippets/blob/main/snippets/solidity.json)
+- If a linter is set, it will automatically download and start [sohint](https://github.com/protofire/solhint).
 
 </details>
 
 <details>
-<summary>Golang开发</summary>
+<summary>Golang Development</summary>
   
 ```lua
 require("insis").setup({
   golang = {
     enable = true,
-    -- 下边的都是默认值可以省略
+    -- The following are the default values and can be omitted
     lsp = "gopls",
     linter = "golangci-lint",
     formatter = "gofmt",
@@ -393,7 +393,7 @@ require("insis").setup({
 </details>
 
 <details>
-<summary>clangd开发</summary>
+<summary>clangd Development</summary>
   
 ```lua
 require("insis").setup({
@@ -409,7 +409,7 @@ require("insis").setup({
 </details>
 
 <details>
-<summary>Bash开发</summary>
+<summary>Bash Development</summary>
   
 ```lua
 require("insis").setup({
@@ -425,7 +425,7 @@ require("insis").setup({
 </details>
 
 <details>
-<summary>Python开发</summary>
+<summary>Python Development</summary>
   
 ```lua
 require("insis").setup({
@@ -443,7 +443,7 @@ require("insis").setup({
 </details>
 
 <details>
-<summary>Ruby开发</summary>
+<summary>Ruby Development</summary>
   
 ```lua
 require("insis").setup({
@@ -459,7 +459,7 @@ require("insis").setup({
 </details>
 
 <details>
-<summary>Docker 开发</summary>
+<summary>Docker Development</summary>
   
 ```lua
 require("insis").setup({
@@ -471,26 +471,26 @@ require("insis").setup({
 ```
 </details>
 
-## 日常使用
+## Daily Use
 
-### 常用命令
+### Common Commands
 
-- 更新插件:
-  - `:Lazy restore` 更新所有插件到 `lazy-lock.json` 锁定的稳定版本
-  - `:Lazy update` 更新所有插件到最新版本，不保证兼容性
-- 查看报错信息:
+- Update plugins:
+  - `:Lazy restore` updates all plugins to the stable version locked in `lazy-lock.json`
+  - `:Lazy update` updates all plugins to the latest version, compatibility is not guaranteed
+- View error messages:
   - `:Notifications`
   - `:messages`
-- 查看/安装 LSP :
-  - `:LspInfo` 查看运行状态
-  - `:Mason` 安装更新等
-- 更新语法高亮：
-  - `:TSUpdate` 全部更新
-  - `:TSUpdate <json>` 单独更新
-- Markdown 预览：
+- View/install LSP:
+  - `:LspInfo` to view the running status
+  - `:Mason` to install, update, etc.
+- Update syntax highlighting:
+  - `:TSUpdate` to update all
+  - `:TSUpdate <json>` to update individually
+- Markdown preview:
   - `:MarkdownPreview`
 
-### 代码折叠快捷键
+### Code Folding Shortcuts
 
 | fold shortcuts | description     |
 | -------------- | --------------- |
@@ -500,17 +500,17 @@ require("insis").setup({
 | zM             | close all folds |
 | zR             | open all folds  |
 
-更新中。。。
+Updating...
 
-## 微信群
+## WeChat Group
 
-有问题扫码加我，注明 `vim` ，拉你进群，微信号：nshen121
+If you have any questions, scan the code to add me, please specify `vim`, and I will invite you to the group. WeChat ID: nshen121
 
 <img src="./wechat.jpg" alt="image" width="300" height="auto">
 
-## 项目结构
+## Project Structure
 
-如何扩展
+How to extend
 
 TODO
 
