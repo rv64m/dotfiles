@@ -57,30 +57,7 @@ install_rust() {
     log_success "Rust installed successfully!"
 }
 
-# 3. Install NVM and Node.js
-install_nvm_and_node() {
-    NODE_VERSION="lts/*" # Use LTS version
-    
-    if [ -s "$HOME/.nvm/nvm.sh" ]; then
-        log_info "NVM is already installed, skipping installation."
-    else
-        log_step "Installing NVM (Node Version Manager)"
-        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-    fi
-    
-    # Load NVM
-    export NVM_DIR="$HOME/.nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-    
-    log_step "Installing Node.js (LTS)"
-    if nvm ls ${NODE_VERSION} --no-colors | grep -q "N/A"; then
-        nvm install "${NODE_VERSION}"
-    else
-        log_info "Node.js (LTS) is already installed."
-    nvm use "${NODE_VERSION}"
-    nvm alias default "${NODE_VERSION}"
-    log_success "Node.js (LTS) has been set up and set as the default version."
-}
+
 
 # 4. Install the latest version of Go
 install_golang() {
@@ -113,12 +90,12 @@ install_golang() {
 # 5. Unified configuration of Shell environment
 setup_shell_environment() {
     log_step "Writing environment variables to $SHELL_RC_FILE"
-    
+
     local marker="# <<< Env setup by dev_linux.sh >>>"
     if grep -qF -- "$marker" "$SHELL_RC_FILE"; then
         log_info "Environment variables already exist, no need to write them again."
         return
-    }
+    fi # <-- CORRECTED: Replaced '}' with 'fi'
 
     cat <<'EOF' >> "$SHELL_RC_FILE"
 
@@ -152,7 +129,6 @@ main() {
     detect_shell_config
     install_base_tools
     install_rust
-    install_nvm_and_node
     install_golang
     setup_shell_environment
     

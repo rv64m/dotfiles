@@ -83,7 +83,7 @@ setup_new_config() {
         log_warn "Warning: Source configuration folder '$SOURCE_CONFIG_DIR' not found."
         log_info "A Neovim with no configuration will be launched. Please configure it manually later."
         return
-    }
+    fi
 
     log_info "Source configuration found: $SOURCE_CONFIG_DIR"
     log_info "Copying configuration to: $NVIM_CONFIG_DIR"

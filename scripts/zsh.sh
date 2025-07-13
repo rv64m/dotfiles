@@ -152,6 +152,8 @@ configure_zshrc() {
         sed -i.tmp "s/^plugins=(.*)/${plugins_line}/" "$zshrc_file"
         log_success "Plugin list has been updated."
     fi
+
+    echo "source $HOME/.proxy.sh"
     
     rm -f "${zshrc_file}.tmp"
 }

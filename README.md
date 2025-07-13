@@ -120,7 +120,7 @@ You need to run `:Codeium Auth` for authentication the first time you use it.
 
 #### Buffers
 
-In the Vim world, a Buffer represents a file that has been loaded into memory. It's very similar to a Tab in VSCode. When you see a tab in VSCode, it means that a file has been loaded into memory.
+In the Vim world, a Buffer represents a file that has been loaded into memory. It\'s very similar to a Tab in VSCode. When you see a tab in VSCode, it means that a file has been loaded into memory.
 
 InsisVim uses the [bufferline.nvim](https://github.com/akinsho/bufferline.nvim) plugin to simulate this behavior, and it simplifies the configuration, making it very easy to customize keybindings.
 
@@ -271,7 +271,7 @@ require("insis").setup({
 
 After enabling the `json` function and restarting:
 
-- It will automatically install Treesitter's JSON syntax highlighting.
+- It will automatically install Treesitter\'s JSON syntax highlighting.
 - It will automatically install and configure the [jsonls](https://github.com/microsoft/vscode-json-languageservice) Language Server.
 
 </details>
@@ -307,7 +307,7 @@ require("insis").setup({
 })
 ```
 
-After enabling the markdown function and restarting, it will automatically install Treesitter's markdown syntax highlighting and prettier for formatting.
+After enabling the markdown function and restarting, it will automatically install Treesitter\'s markdown syntax highlighting and prettier for formatting.
 
 It adds the `:MarkdownPreview` command to preview markdown files in real time.
 
@@ -501,6 +501,111 @@ require("insis").setup({
 | zR             | open all folds  |
 
 Updating...
+
+## Keybindings
+
+### General
+
+| Keybinding | Description |
+|---|---|
+| `<Esc>` | Clear search highlights |
+| `<leader>q` | Open diagnostic quickfix list |
+| `<leader>e` | Show diagnostic error messages |
+| `[d` | Go to previous diagnostic message |
+| `]d` | Go to next diagnostic message |
+| `<Esc><Esc>` | Exit terminal mode |
+| `<C-h>` | Move focus to the left window |
+| `<C-l>` | Move focus to the right window |
+| `<C-j>` | Move focus to the lower window |
+| `<C-k>` | Move focus to the upper window |
+
+### Telescope
+
+| Keybinding | Description |
+|---|---|
+| `<leader>sh` | Search help tags |
+| `<leader>sk` | Search keymaps |
+| `<leader>ss` | Search select telescope |
+| `<leader>sd` | Search diagnostics |
+| `<leader>sr` | Search resume |
+| `<leader>ff` | Search files |
+| `<leader>fw` | Search current word |
+| `<leader>fg` | Search by grep |
+| `<leader>fo` | Search recent files |
+| `<leader><leader>` | Find existing buffers |
+| `<leader>/` | Fuzzily search in current buffer |
+| `<leader>s/` | Search in open files |
+| `<leader>sn` | Search Neovim files |
+
+### LSP
+
+| Keybinding | Description |
+|---|---|
+| `grn` | Rename |
+| `ga` | Goto code action |
+| `gr` | Goto references |
+| `gi` | Goto implementation |
+| `gd` | Goto definition |
+| `gD` | Goto declaration |
+| `gs` | Open document symbols |
+| `gS` | Open workspace symbols |
+| `grt` | Goto type definition |
+| `<leader>th` | Toggle inlay hints |
+
+### Debugging
+
+| Keybinding | Description |
+|---|---|
+| `<F5>` | Debug: Start/Continue |
+| `<F1>` | Debug: Step Into |
+| `<F2>` | Debug: Step Over |
+| `<F3>` | Debug: Step Out |
+| `<leader>b` | Debug: Toggle Breakpoint |
+| `<leader>B` | Debug: Set Breakpoint |
+| `<F7>` | Debug: See last session result |
+
+### Git
+
+| Keybinding | Description |
+|---|---|
+| `]c` | Jump to next git change |
+| `[c` | Jump to previous git change |
+| `<leader>hs` | Git stage hunk |
+| `<leader>hr` | Git reset hunk |
+| `<leader>hS` | Git stage buffer |
+| `<leader>hu` | Git undo stage hunk |
+| `<leader>hR` | Git reset buffer |
+| `<leader>hp` | Git preview hunk |
+| `<leader>hb` | Git blame line |
+| `<leader>hd` | Git diff against index |
+| `<leader>hD` | Git diff against last commit |
+| `<leader>tb` | Toggle git show blame line |
+| `<leader>tD` | Toggle git show deleted |
+
+### Neo-tree
+
+| Keybinding | Description |
+|---|---|
+| `\` | NeoTree reveal |
+| `P` | Toggle preview |
+
+### Outline
+
+| Keybinding | Description |
+|---|---|
+| `{` | Outline jump to previous symbol |
+| `}` | Outline jump to next symbol |
+| `<leader>a` | Outline toggle |
+
+### Terminal
+
+| Keybinding | Description |
+|---|---|
+| `<leader>tf` | Terminal float |
+| `<leader>th` | Terminal horizontal (bottom) |
+| `<leader>tv` | Terminal vertical (left) |
+| `<leader>tr` | Terminal right |
+| `<leader>tg` | Terminal lazygit |
 
 ## WeChat Group
 
