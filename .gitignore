@@ -1,0 +1,29 @@
+# Secrets / local overrides
+.env
+.env.*
+
+# Dotbot vendor
+/vendor/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.bak
+
+# Python
+__pycache__/
+*.pyc
+
+# Node
+node_modules/
+
+# Logs
+*.log
+
+# Local cache
+.cache/
+
+# Fonts cache (Linux)
+**/.fontconfig/

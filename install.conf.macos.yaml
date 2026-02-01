@@ -1,0 +1,26 @@
+- defaults:
+    link:
+      create: true
+      relink: true
+      force: true
+
+- shell:
+  - [bash scripts/macos/packages.sh, "Install base packages (Homebrew)"]
+  - [bash scripts/macos/fonts.sh, "Install Nerd Fonts"]
+  - [bash scripts/macos/starship.sh, "Install Starship prompt"]
+  - [bash scripts/macos/zsh-plugins.sh, "Install Zsh plugins"]
+  - [bash scripts/macos/nvm.sh, "Install nvm + Node LTS"]
+  - [bash scripts/macos/claude-code.sh, "Install Claude Code"]
+  - [bash scripts/macos/coding-helper.sh, "Install @z_ai/coding-helper"]
+  - [bash scripts/macos/nvim.sh, "Install Neovim (source)"]
+  - [bash scripts/macos/prelink.sh, "Prepare link targets"]
+  - [bash scripts/macos/post-install.sh, "Start zsh"]
+
+- link:
+    ~/.zshrc: zsh/.zshrc
+    ~/.tmux.conf: tmux/.tmux.conf
+    ~/.config/nvim: nvim
+    ~/.config/proxy/proxy.sh: proxy/proxy.sh
+    ~/.config/proxy/config.sh: proxy/config.sh
+    ~/.config/starship.toml: starship.toml
+    ~/.config/dotfiles/.env.example: .env.example

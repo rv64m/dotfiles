@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+DOTBOT_DIR="$BASE_DIR/vendor/dotbot"
+
+if [ ! -d "$DOTBOT_DIR" ]; then
+  echo "Dotbot not found. Cloning into $DOTBOT_DIR..."
+  git clone https://github.com/anishathalye/dotbot.git "$DOTBOT_DIR"
+  (cd "$DOTBOT_DIR" && git submodule update --init --recursive)
+fi
+
+COMMON_CONF="$BASE_DIR/install.conf.common.yaml"
+OS_CONF=""
+
+case "$(uname -s)" in
+  Linux) OS_CONF="$BASE_DIR/install.conf.linux.yaml" ;;
+  Darwin) OS_CONF="$BASE_DIR/install.conf.macos.yaml" ;;
+  *)
+    echo "Unsupported OS for this installer. Use install.ps1 on Windows."
+    exit 1
+    ;;
+ esac
+
+DOTBOT_ARGS=()
+DOTFILES_VERBOSE=0
+DOTFILES_QUIET=0
+for arg in "$@"; do
+  case "$arg" in
+    -v|--verbose)
+      DOTBOT_ARGS+=("-v")
+      DOTFILES_VERBOSE=1
+      ;;
+    -q|--quiet)
+      DOTBOT_ARGS+=("-q")
+      DOTFILES_QUIET=1
+      ;;
+    *) DOTBOT_ARGS+=("$arg") ;;
+  esac
+done
+
+export DOTFILES_VERBOSE DOTFILES_QUIET
+
+python3 "$DOTBOT_DIR/bin/dotbot" -d "$BASE_DIR" -c "$COMMON_CONF" -c "$OS_CONF" "${DOTBOT_ARGS[@]}"

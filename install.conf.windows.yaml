@@ -1,0 +1,12 @@
+- shell:
+  - [powershell -NoProfile -ExecutionPolicy Bypass -File scripts/windows/setup.ps1, "Install apps via winget + scoop"]
+  - [powershell -NoProfile -ExecutionPolicy Bypass -File scripts/windows/fonts.ps1, "Install Nerd Fonts"]
+  - [powershell -NoProfile -ExecutionPolicy Bypass -File scripts/windows/claude-code.ps1, "Install Claude Code"]
+  - [powershell -NoProfile -ExecutionPolicy Bypass -File scripts/windows/coding-helper.ps1, "Install @z_ai/coding-helper"]
+  - [powershell -NoProfile -ExecutionPolicy Bypass -File scripts/windows/post-install.ps1, "Start zsh"]
+
+- link:
+    ~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1: powershell/Microsoft.PowerShell_profile.ps1
+    ~/Documents/PowerShell/proxy.ps1: powershell/proxy.ps1
+    ~/Documents/PowerShell/proxy.config.ps1: powershell/proxy.config.ps1
+    ~/AppData/Local/nvim: nvim

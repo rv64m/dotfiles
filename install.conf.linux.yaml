@@ -1,0 +1,26 @@
+- defaults:
+    link:
+      create: true
+      relink: true
+      force: true
+
+- shell:
+  - [bash scripts/linux/packages.sh, "Install base packages (Ubuntu)"]
+  - [bash scripts/linux/fonts.sh, "Install Nerd Fonts"]
+  - [bash scripts/linux/starship.sh, "Install Starship prompt"]
+  - [bash scripts/linux/zsh-plugins.sh, "Install Zsh plugins"]
+  - [bash scripts/linux/nvm.sh, "Install nvm + Node LTS"]
+  - [bash scripts/linux/claude-code.sh, "Install Claude Code"]
+  - [bash scripts/linux/coding-helper.sh, "Install @z_ai/coding-helper"]
+  - [bash scripts/linux/nvim.sh, "Install Neovim (source)"]
+  - [bash scripts/linux/prelink.sh, "Prepare link targets"]
+  - [bash scripts/linux/post-install.sh, "Start zsh"]
+
+- link:
+    ~/.zshrc: zsh/.zshrc
+    ~/.tmux.conf: tmux/.tmux.conf
+    ~/.config/nvim: nvim
+    ~/.config/proxy/proxy.sh: proxy/proxy.sh
+    ~/.config/proxy/config.sh: proxy/config.sh
+    ~/.config/starship.toml: starship.toml
+    ~/.config/dotfiles/.env.example: .env.example
