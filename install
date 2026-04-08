@@ -41,4 +41,9 @@ done
 
 export DOTFILES_VERBOSE DOTFILES_QUIET
 
-python3 "$DOTBOT_DIR/bin/dotbot" -d "$BASE_DIR" -c "$COMMON_CONF" -c "$OS_CONF" "${DOTBOT_ARGS[@]}"
+DOTBOT_CMD=(python3 "$DOTBOT_DIR/bin/dotbot" -d "$BASE_DIR" -c "$COMMON_CONF" -c "$OS_CONF")
+if ((${#DOTBOT_ARGS[@]} > 0)); then
+  DOTBOT_CMD+=("${DOTBOT_ARGS[@]}")
+fi
+
+"${DOTBOT_CMD[@]}"

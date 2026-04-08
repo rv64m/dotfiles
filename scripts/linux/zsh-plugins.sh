@@ -23,3 +23,7 @@ fi
 if [ ! -d "$PLUGIN_DIR/zsh-history-substring-search" ]; then
   run git clone https://github.com/zsh-users/zsh-history-substring-search.git "$PLUGIN_DIR/zsh-history-substring-search"
 fi
+
+if [ ! -d "$PLUGIN_DIR/z" ]; then
+  run git clone https://github.com/rupa/z.git "$PLUGIN_DIR/z"
+fi
