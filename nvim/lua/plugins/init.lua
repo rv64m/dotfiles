@@ -1,2 +1,4 @@
 -- Add custom plugins here
-return {}
+return {
+
+}
